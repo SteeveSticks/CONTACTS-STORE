@@ -1,0 +1,154 @@
+@import "../mixins";
+.title {
+  display: inline-block;
+  width: 100%;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+  @include smallDeviceSize {
+    font-size: 3rem;
+  }
+}
+.input {
+  margin-bottom: 1.5rem;
+  margin-left: 8px;
+  width: 230px;
+  height: 19px;
+  @include smallDeviceSize {
+    font-size: 3rem;
+  }
+}
+.button {
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  background: transparent;
+  color: #222;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: 0.25rem;
+  display: inline-block;
+  transition: all 0.3s linear;
+  font-size: 0.875rem;
+  border: 2px solid #222;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    color: #fff;
+    background: #222;
+  }
+}
+.newPost {
+  @import "../mixins";
+
+  display: inline-block;
+  width: 100%;
+  font-family: "Poppins";
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+  @include smallDeviceSize {
+    font-size: 3rem;
+  }
+}
+.container {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+  background-color: #374151;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: 0.25rem;
+  display: inline-block;
+  transition: all 0.3s linear;
+  font-size: 0.875rem;
+  border: 2px solid #222;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    color: #fff;
+    background: #374151;
+  }
+}
+li {
+  margin-top: 1.5rem;
+  list-style-type: none;
+}
+.delete {
+  height: 1.5rem;
+  float: left;
+  margin-bottom: 2px;
+}
+.edit {
+  height: 1.5rem;
+  float: left;
+  margin-bottom: 2px;
+  margin-left: 1.5rem;
+}
+.post {
+  font-size: 1rem;
+}
+
+.name {
+  color: var(--white);
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+}
+
+.formBorder {
+  border: 1px solid #374151;
+  width: 40%;
+  background-color: #111827;
+  margin-bottom: 5rem;
+  padding: 1.5rem;
+
+  .form {
+    width: 100%;
+    label {
+      font-size: 1.3rem;
+      color: #eee;
+      input {
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #374151;
+        transition: 0.3s ease-in;
+        text-transform: capitalize;
+        color: var(--gray-1);
+        background-color: #374151;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.buttonHeader {
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+}
+.updateButton {
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #374151;
+  color: #fff;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.cancelButton {
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #374151;
+  color: black;
+  cursor: pointer;
+}
