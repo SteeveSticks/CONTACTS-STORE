@@ -27,7 +27,7 @@ const GetList = () => {
       setNewPost(response.data);
       // console.log(newPost);
     } catch (err) {
-      setError("Error adding the post");
+      toast.error("Error adding the post");
     } finally {
       setLoading(false);
     }
@@ -43,6 +43,8 @@ const GetList = () => {
     setContacts(post.phone);
     setName(post.name);
     setEditingId(post._id);
+
+    document.body.style.overflow = "hidden";
   };
 
   const editFunction = async () => {
@@ -61,8 +63,24 @@ const GetList = () => {
 
       // console.log(response.data);
       setToggleModal(false);
+      toast.success("Contact Updated Sucessfully");
+
+      document.body.style.overflow = "auto";
+
+      if (name === "") {
+        toast.error("Please fill the name ");
+        return;
+      }
+      if (contacts === "") {
+        toast.error("Please fill the contacts");
+        return;
+      }
+      if (email === "") {
+        toast.error("Please fill the email");
+        return;
+      }
     } catch (err) {
-      setErr("Error adding the post");
+      toast.error("Error adding the post");
     } finally {
       setLoad(false);
     }
@@ -79,9 +97,9 @@ const GetList = () => {
       setNewPost((prevData) =>
         prevData.filter((item) => item._id !== deleteId)
       );
-      setMessage("Contact deleted successfully");
-    } catch (err) {
-      setError("Error deleting the contact");
+      toast.success("Contact deleted successfully");
+    } catch (error) {
+      // toast.error("Error deleting the contact");
     }
   };
 
@@ -96,60 +114,64 @@ const GetList = () => {
         </button>
       </div>
       {toggleModal && (
-        <div className={style.formBorder}>
-          <form className={style.form}>
-            <h1 className={style.name}>Update CONTACTS</h1>
-            <label htmlFor="title">
-              Name
-              <input
-                type="text"
-                id="title"
-                autoFocus
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-            <label htmlFor="type">
-              Phone No
-              <input
-                type="text"
-                id="title"
-                autoFocus
-                value={contacts}
-                onChange={(e) => setContacts(e.target.value)}
-              />
-            </label>
-            <label htmlFor="type">
-              Email
-              <input
-                type="text"
-                id="title"
-                autoFocus
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <div className={style.buttonHeader}>
-              <button
-                className={style.updateButton}
-                type="submit"
-                onClick={() => {
-                  setToggleModal(false);
-                  editFunction();
-                }}
-              >
-                Update task
-              </button>
-              <button
-                className={style.cancelButton}
-                onClick={() => {
-                  setToggleModal(false);
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
+        <div className={style.overlay}>
+          <div className={style.formBorder}>
+            <form className={style.form}>
+              <h1 className={style.name}>Update CONTACTS</h1>
+              <label htmlFor="title">
+                Name
+                <input
+                  type="text"
+                  id="title"
+                  autoFocus
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label htmlFor="type">
+                Phone No
+                <input
+                  type="text"
+                  id="title"
+                  autoFocus
+                  value={contacts}
+                  onChange={(e) => setContacts(e.target.value)}
+                />
+              </label>
+              <label htmlFor="type">
+                Email
+                <input
+                  type="text"
+                  id="title"
+                  autoFocus
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+              <div className={style.buttonHeader}>
+                <button
+                  className={style.updateButton}
+                  type="submit"
+                  onClick={() => {
+                    setToggleModal(false);
+                    editFunction();
+                  }}
+                >
+                  Update task
+                </button>
+                <button
+                  className={style.cancelButton}
+                  onClick={() => {
+                    setToggleModal(false);
+
+                    document.body.style.overflow = "auto";
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
 
@@ -157,7 +179,7 @@ const GetList = () => {
         {newPost &&
           newPost.map((post) => (
             <li key={post.id}>
-              <div>
+              <div className={style.image}>
                 <div>
                   <img
                     src={images}

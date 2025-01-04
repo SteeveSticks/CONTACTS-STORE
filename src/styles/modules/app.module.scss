@@ -1,4 +1,10 @@
 @import "../mixins";
+
+body {
+  height: 100vh;
+  padding-right: 15px; /* Avoid wsidth reflow */
+}
+
 .title {
   display: inline-block;
   width: 100%;
@@ -67,8 +73,8 @@
   transition: all 0.3s linear;
   font-size: 0.875rem;
   border: 2px solid #222;
-  cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  overflow: visible;
 
   &:hover {
     color: #fff;
@@ -101,12 +107,28 @@ li {
   text-transform: capitalize;
 }
 
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(49, 49, 49, 0.8);
+
+  position: fixed;
+}
+
 .formBorder {
   border: 1px solid #374151;
   width: 40%;
   background-color: #111827;
   margin-bottom: 5rem;
   padding: 1.5rem;
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  bottom: 10;
 
   .form {
     width: 100%;
@@ -150,5 +172,9 @@ li {
   border: none;
   background-color: #374151;
   color: black;
+  cursor: pointer;
+}
+
+.image {
   cursor: pointer;
 }
